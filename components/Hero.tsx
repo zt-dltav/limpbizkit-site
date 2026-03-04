@@ -108,19 +108,19 @@ export function Hero() {
       ></div>
 
       {/* Corner annotations */}
-      <span className="absolute top-28 left-6 md:left-12 text-[0.68rem] tracking-[0.18em] uppercase text-cream/50 leading-loose pointer-events-none">
-        Nu Metal · Jacksonville FL
-      </span>
-      <span className="absolute top-28 right-6 md:right-12 text-[0.68rem] tracking-[0.18em] uppercase text-cream/50 text-right leading-loose pointer-events-none">
-        Fred Durst · Wes Borland
-        <br />
-        John Otto · DJ Lethal
-        <br />
-        Sam Rivers · 1977–2025
-      </span>
-      <span className="absolute bottom-24 left-6 md:left-12 text-[0.68rem] tracking-[0.18em] uppercase text-cream/50 pointer-events-none">
-        40M Records Worldwide
-      </span>
+      <span className="hidden md:block absolute top-28 left-6 md:left-12 text-[0.68rem] tracking-[0.18em] uppercase text-cream/50 leading-loose pointer-events-none">
+  Nu Metal · Jacksonville FL
+</span>
+<span className="hidden md:block absolute top-28 right-6 md:right-12 text-[0.68rem] tracking-[0.18em] uppercase text-cream/50 text-right leading-loose pointer-events-none">
+  Fred Durst · Wes Borland
+  <br />
+  John Otto · DJ Lethal
+  <br />
+  Sam Rivers · 1977–2025
+</span>
+<span className="hidden md:block absolute bottom-24 left-6 md:left-12 text-[0.68rem] tracking-[0.18em] uppercase text-cream/50 pointer-events-none">
+  40M Records Worldwide
+</span>
 
       {/* Band name */}
 <div className="relative w-full flex items-center justify-center text-center">
