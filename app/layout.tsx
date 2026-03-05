@@ -3,6 +3,7 @@ import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Ticker } from "@/components/Ticker";
 import { spaceMono } from "./fonts";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Limp Bizkit — Official Site",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Ticker />
+        <Analytics />
       </body>
     </html>
   );

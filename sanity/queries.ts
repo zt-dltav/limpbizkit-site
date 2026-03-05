@@ -26,6 +26,8 @@ export async function getTourDates(): Promise<TourDate[]> {
       city,
       country,
       ticketUrl
-    }`
+    }`,
+    {},
+    { next: { revalidate: 60 } }
   );
 }

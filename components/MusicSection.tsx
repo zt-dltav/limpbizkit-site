@@ -26,10 +26,12 @@ type Album = {
 
 async function getAlbums(): Promise<Album[]> {
   return client.fetch(
-    `*[_type == "album"] | order(order asc) {
+    `*[_type == "album"] | order(year desc) {
       _id, title, year, coverImage, coverPlaceholderColor,
       highlights, streamingLinks, isFeatured, order
-    }`
+    }`,
+    {},
+    { next: { revalidate: 60 } }
   );
 }
 
