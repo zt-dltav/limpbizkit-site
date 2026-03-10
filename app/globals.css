@@ -4,7 +4,7 @@
 
 @theme {
   --color-bg:    #080808;
-  --color-green: #3dff14;
+  --color-green: #ff6600;
   --color-pink:  #c4a0b0;
   --color-blue:  #8ab4c8;
   --color-cream: #e2dbd0;
@@ -14,8 +14,8 @@
 }
 
 :root {
-  --green-glow:  rgba(61, 255, 20, 0.35);
-  --green-dim:   rgba(61, 255, 20, 0.12);
+  --green-glow:  rgba(255, 102, 0, 0.35);
+  --green-dim:   rgba(255, 102, 0, 0.12);
   --cream-dim:   rgba(226, 219, 208, 0.55);
 }
 
@@ -24,7 +24,6 @@
 html, body {
   background: #080808;
   color: #e2dbd0;
-  overflow-x: hidden;
 }
 
 body::before {
@@ -36,7 +35,7 @@ body::before {
   background-size: 180px 180px;
   opacity: 0.05;
   pointer-events: none;
-  z-index: 900;
+  z-index: 0;
   mix-blend-mode: overlay;
   animation: grain 0.4s steps(1) infinite;
 }
@@ -49,4 +48,53 @@ body::before {
   80% { transform: translate(5%,-5%);  }
 }
 
-::selection { background: #3dff14; color: #080808; }
+::selection { background: #ff6600; color: #080808; }
+/* ── Hero keyframes ── */
+@keyframes flameFlow {
+  0%   { background-position: 50% 20%, 50% 100%; }
+  50%  { background-position: 50% 10%, 50% 100%; }
+  100% { background-position: 50% 20%, 50% 100%; }
+}
+
+@keyframes overSpray {
+  0%, 100% {
+    text-shadow:
+      -2px -1px  6px rgba(255,200,0, 0.22),
+       2px  1px  7px rgba(255,80,0,  0.18),
+      -3px  2px  9px rgba(255,140,0, 0.12),
+       3px -2px  8px rgba(220,60,0,  0.13);
+  }
+  50% {
+    text-shadow:
+      -3px -2px  8px rgba(255,220,0, 0.28),
+       3px  2px  9px rgba(255,100,0, 0.22),
+      -4px  3px 11px rgba(255,160,0, 0.15),
+       4px -3px 10px rgba(200,40,0,  0.16);
+  }
+}
+
+@keyframes heroSprayFloat {
+  0%,100% { opacity: var(--hero-blob-op, 0.15); transform: var(--hero-blob-t0, scale(1)); }
+  50%     { opacity: calc(var(--hero-blob-op, 0.15) * 1.5); transform: var(--hero-blob-t1, scale(1.04)); }
+}
+
+@keyframes heroTagWiggle {
+  0%,100% { transform: rotate(var(--hero-tag-r, 0deg)) scale(1);    }
+  50%     { transform: rotate(var(--hero-tag-r, 0deg)) scale(1.02); }
+}
+
+.hero-title {
+  animation: flameFlow 1.8s linear infinite, overSpray 6s ease-in-out infinite;
+}
+
+.hero-fire-wrap {
+}
+
+.hero-spray-blob {
+  animation: heroSprayFloat 6s ease-in-out infinite;
+}
+
+.hero-scatter-tag {
+  font-family: 'Permanent Marker', cursive;
+  animation: heroTagWiggle 7s ease-in-out infinite;
+}

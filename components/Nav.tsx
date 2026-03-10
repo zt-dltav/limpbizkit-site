@@ -23,27 +23,59 @@ const SOCIALS = [
   },
 ];
 
+// All anchor links — no separate /about route needed
+const NAV_LINKS = [
+  { label: "Tour",  href: "#tour" },
+  { label: "Music", href: "#music" },
+  { label: "About", href: "#about" },
+];
+
 export function Nav() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 bg-gradient-to-b from-bg/95 to-transparent gap-8">
-      <div className="text-xs tracking-[0.2em] uppercase text-green border border-green/45 px-4 py-2 hover:bg-green/10 hover:shadow-[0_0_14px_rgba(61,255,20,0.35)] transition-all duration-200 whitespace-nowrap">
+    // top = 32px — sits flush below the Hero's fan site sticky bar
+    <nav
+      className="fixed left-0 right-0 z-50 flex items-center justify-between bg-gradient-to-b from-bg/95 to-transparent gap-8"
+      style={{
+        top: "32px",
+        paddingInline: "clamp(1.5rem, 3vw, 4rem)",
+        paddingBlock: "clamp(1rem, 1.5vw, 1.75rem)",
+      }}
+    >
+      {/* LB badge */}
+      <div
+        className="text-green border border-green/45 hover:bg-green/10 hover:shadow-[0_0_14px_rgba(61,255,20,0.35)] transition-all duration-200 whitespace-nowrap uppercase tracking-[0.2em]"
+        style={{
+          fontSize: "clamp(0.65rem, 0.6vw, 0.95rem)",
+          paddingInline: "clamp(0.75rem, 1vw, 1.25rem)",
+          paddingBlock: "clamp(0.35rem, 0.5vw, 0.6rem)",
+        }}
+      >
         LB · Est. 1995
       </div>
 
-      <div className="hidden md:flex gap-10">
-        {["Tour", "Music", "Media", "Merch", "Community"].map((item) => (
+      {/* Nav links — hidden on mobile */}
+      <div className="hidden md:flex" style={{ gap: "clamp(1.5rem, 2.5vw, 3.5rem)" }}>
+        {NAV_LINKS.map(({ label, href }) => (
           <Link
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="text-[0.8rem] tracking-[0.16em] uppercase text-cream/55 hover:text-green transition-colors duration-200 relative group"
+            key={label}
+            href={href}
+            className="uppercase text-cream/55 hover:text-green transition-colors duration-200 relative group"
+            style={{ fontSize: "clamp(0.75rem, 0.65vw, 1rem)", letterSpacing: "0.16em" }}
           >
-            {item}
+            {label}
             <span className="absolute -bottom-1 left-0 w-0 h-px bg-green group-hover:w-full transition-all duration-250" />
           </Link>
         ))}
       </div>
 
-      <div className="flex gap-5 items-center">
+      {/* Social icons */}
+      <div
+        className="flex items-center"
+        style={{
+          gap: "clamp(1rem, 1.5vw, 2rem)",
+          fontSize: "clamp(1.1rem, 1.3vw, 1.7rem)",
+        }}
+      >
         {SOCIALS.map((s) => (
           <a
             key={s.label}
@@ -52,10 +84,12 @@ export function Nav() {
             rel="noopener noreferrer"
             aria-label={s.label}
             className="text-cream/55 hover:text-green hover:-translate-y-0.5 transition-all duration-200"
+            style={{ display: "flex" }}
           >
             <svg
               viewBox="0 0 24 24"
-              className="w-5 h-5 fill-current"
+              style={{ width: "1em", height: "1em" }}
+              className="fill-current"
               dangerouslySetInnerHTML={{ __html: s.icon }}
             />
           </a>
